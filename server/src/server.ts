@@ -6,8 +6,8 @@ import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
-const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
-const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '';
+const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || '';
 const app = express();
 
 passport.use(
@@ -17,7 +17,7 @@ passport.use(
       clientSecret: GOOGLE_CLIENT_SECRET,
       callbackURL: '/auth/google/callback',
     },
-    (accessToken) => {
+    (accessToken: string) => {
       console.log(accessToken);
     },
   ),
