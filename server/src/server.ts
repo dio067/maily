@@ -1,4 +1,5 @@
 import express from 'express';
+import './services/passportGoogle';
 import authRouter from './routes/authRoutes';
 import dotenv from 'dotenv';
 
