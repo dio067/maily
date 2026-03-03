@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import passport from 'passport';
+import passport, { Profile } from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 
 dotenv.config();
@@ -17,11 +17,22 @@ passport.use(
       clientSecret: GOOGLE_CLIENT_SECRET,
       callbackURL: '/auth/google/callback',
     },
-    (accessToken: string) => {
-      console.log(accessToken);
+    (accessToken: string, refreshToken: string, profile: Profile) => {
+      console.log('access token', accessToken);
+      console.log('refresh Token', refreshToken);
+      console.log('profile', profile);
     },
   ),
 );
+
+app.get(
+  '/auth/google',
+  passport.authenticate('google', {
+    scope: ['profile', 'email'],
+  }),
+);
+
+app.get('/auth/google/callback', passport.authenticate('google'));
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
