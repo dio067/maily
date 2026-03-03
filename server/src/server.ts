@@ -1,29 +1,12 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import passport, { Profile } from 'passport';
-import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
+import passport from 'passport';
 
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
-const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '';
-const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || '';
-const app = express();
 
-passport.use(
-  new GoogleStrategy(
-    {
-      clientID: GOOGLE_CLIENT_ID,
-      clientSecret: GOOGLE_CLIENT_SECRET,
-      callbackURL: '/auth/google/callback',
-    },
-    (accessToken: string, refreshToken: string, profile: Profile) => {
-      console.log('access token', accessToken);
-      console.log('refresh Token', refreshToken);
-      console.log('profile', profile);
-    },
-  ),
-);
+const app = express();
 
 app.get(
   '/auth/google',
