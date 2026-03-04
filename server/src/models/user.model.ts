@@ -1,0 +1,20 @@
+import pool from '../config/db';
+
+export const findOrCreateNewUser = async (
+  googleId: string,
+  email: string,
+  name: string,
+) => {
+  const existing = await pool.query(`SELECT FROM users WHERE googleId = $1`, [
+    googleId,
+  ]);
+
+  if (existing.rows.length > 0) return existing.rows[0];
+
+  const newUser = await pool.query(
+    `INSERT INTO users(googleId, email, name) values($1, $2, $3) RETURNING`,
+    [googleId, email, name],
+  );
+
+  return newUser.rows[0];
+};
