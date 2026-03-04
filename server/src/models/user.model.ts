@@ -12,7 +12,7 @@ export const findOrCreateNewUser = async (
   if (existing.rows.length > 0) return existing.rows[0];
 
   const newUser = await pool.query(
-    `INSERT INTO users(google_id, email, name) values($1, $2, $3) RETURNING`,
+    `INSERT INTO users(google_id, email, name) values($1, $2, $3) RETURNING *`,
     [googleId, email, name],
   );
 
