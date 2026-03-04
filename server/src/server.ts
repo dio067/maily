@@ -11,6 +11,6 @@ const app = express();
 
 app.use(authRouter);
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`Server is running on port ${PORT}`);
 });
