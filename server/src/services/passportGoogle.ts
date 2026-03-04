@@ -9,6 +9,10 @@ dotenv.config();
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '';
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || '';
 
+passport.serializeUser((user: any, done) => {
+  done(null, user.id);
+});
+
 passport.use(
   new GoogleStrategy(
     {
