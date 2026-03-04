@@ -1,5 +1,7 @@
 import passport, { Profile } from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
+import { findOrCreateNewUser } from '../models/user.model';
+
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -14,10 +16,19 @@ passport.use(
       clientSecret: GOOGLE_CLIENT_SECRET,
       callbackURL: '/auth/google/callback',
     },
-    (accessToken: string, refreshToken: string, profile: Profile) => {
-      console.log('access token', accessToken);
-      console.log('refresh Token', refreshToken);
-      console.log('profile', profile);
+    async (
+      accessToken: string,
+      refreshToken: string,
+      profile: Profile,
+      done: Function,
+    ) => {
+      const user = await findOrCreateNewUser(
+        profile.id,
+        profile.emails?.[0]?.value ?? '',
+        profile.displayName,
+      );
+
+      return done(null, user);
     },
   ),
 );
