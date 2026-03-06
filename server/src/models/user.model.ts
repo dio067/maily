@@ -1,7 +1,7 @@
 import pool from '../config/db';
 
 export const findOrCreateNewUser = async (
-  googleId: string,
+  googleId: string, // It might be number ( Used string for general cases)
   email: string,
   name: string,
 ) => {
