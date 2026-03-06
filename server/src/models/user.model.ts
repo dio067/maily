@@ -5,9 +5,10 @@ export const findOrCreateNewUser = async (
   email: string,
   name: string,
 ) => {
-  const existing = await pool.query(`SELECT FROM users WHERE google_id = $1`, [
-    googleId,
-  ]);
+  const existing = await pool.query(
+    `SELECT * FROM users WHERE google_id = $1`,
+    [googleId],
+  );
 
   if (existing.rows.length > 0) return existing.rows[0];
 
