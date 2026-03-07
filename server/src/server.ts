@@ -12,7 +12,11 @@ const app = express();
 
 app.use(authRouter);
 
-app.listen(PORT, async () => {
+const startServer = async () => {
   await initDB();
-  console.log(`Server is running on port ${PORT}`);
-});
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+};
+
+startServer();
