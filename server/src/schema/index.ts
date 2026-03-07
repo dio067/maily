@@ -1,7 +1,7 @@
-import findOrCreateNewUser from './users';
+import createUsersTable from './users';
 
 const initDB = async () => {
-  await findOrCreateNewUser();
+  await createUsersTable();
 };
 
 export default initDB;
