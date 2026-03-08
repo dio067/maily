@@ -12,4 +12,13 @@ router.get(
 
 router.get('/auth/google/callback', passport.authenticate('google'));
 
+router.get('/api/logout', (req, res) => {
+  req.session = null;
+  res.redirect('/');
+});
+
+router.get('/api/current_user', (req, res) => {
+  res.send(req.user);
+});
+
 export default router;
