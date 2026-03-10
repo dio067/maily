@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-dotenv.config();
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 import cookieSession from 'cookie-session';
 import passport from 'passport';
 import './services/passportGoogle';
