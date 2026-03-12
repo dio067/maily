@@ -1,14 +1,17 @@
-import { BrowserRouter, Route, Link } from "react-router-dom";
-import { Routes } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Examination from "./Examination";
+import Header from "./Header";
+import Landing from "./Landing";
+import Dashboard from "./Dashboard";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <nav>
-        <Link to='/'></Link>
-      </nav>
+      <Header />
       <Routes>
-        <Route></Route>
+        <Route path='/Landing' element={<Landing />} />
+        <Route path='/Dashboard' element={<Dashboard />} />
+        <Route path='/Examination' element={<Examination />} />
       </Routes>
     </BrowserRouter>
   );
