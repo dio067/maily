@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import store from "./store";
 import { Provider } from "react-redux";
 import App from "./components/App";
+import "./index.css";
 
 const el = document.querySelector("#root")!;
 const root = createRoot(el);
