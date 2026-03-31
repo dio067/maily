@@ -5,6 +5,9 @@ const store = configureStore({
   reducer: {
     [authApi.reducerPath]: authApi.reducer,
   },
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware().concat(authApi.middleware);
+  },
 });
 
 export { useFetchUserQuery } from "./apis/authApi";
