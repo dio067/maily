@@ -1,3 +1,7 @@
+import { useFetchUserQuery } from "../store";
+
 export default function Dashboard() {
-  return <div>Dashboard</div>;
+  const { data, isFetching, error } = useFetchUserQuery(undefined);
+
+  return <div>Dashboard {data}</div>;
 }
