@@ -16,3 +16,4 @@ const authApi = createApi({
 });
 
 export const { useFetchUserQuery } = authApi;
+export { authApi };
