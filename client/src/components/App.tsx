@@ -3,8 +3,10 @@ import Examination from "./Examination";
 import Header from "./Header";
 import Landing from "./Landing";
 import Dashboard from "./Dashboard";
+import { useFetchUserQuery } from "../store";
 
 export default function App() {
+  useFetchUserQuery(undefined);
   return (
     <BrowserRouter>
       <Header />
