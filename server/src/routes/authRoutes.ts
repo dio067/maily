@@ -14,7 +14,7 @@ router.get(
   '/auth/google/callback',
   passport.authenticate('google'),
   (req, res) => {
-    res.redirect('/');
+    res.redirect('/Examinations');
   },
 );
 
