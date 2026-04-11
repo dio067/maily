@@ -13,7 +13,7 @@ export default function App() {
       <Routes>
         <Route path='/Landing' element={<Landing />} />
         <Route path='/Dashboard' element={<Dashboard />} />
-        <Route path='/Examination' element={<Examination />} />
+        <Route path='/Examinations' element={<Examination />} />
       </Routes>
     </BrowserRouter>
   );
