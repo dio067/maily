@@ -20,6 +20,7 @@ listenerMiddleware.startListening({
 
 const store = configureStore({
   reducer: {
+    authSlice: authReducer,
     [authApi.reducerPath]: authApi.reducer,
   },
   middleware: (getDefaultMiddleware) => {
@@ -30,4 +31,6 @@ const store = configureStore({
 });
 
 export { useFetchUserQuery } from "./apis/authApi";
+export { setUser };
+export type RootState = ReturnType<typeof store.getState>;
 export default store;
