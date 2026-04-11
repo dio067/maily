@@ -14,9 +14,6 @@ export default function Header() {
         <h1 className='py-4 px-6 m-2 italic text-white  font-bold text-3xl'>
           Maily
         </h1>
-        <button className=' m-4 w-45 h-12 italic border-3  border-white cursor-pointer hover:w-2xs  hover:-translate-y-0.5 hover:shadow-2xl  transition-all bg-orange-300 text-white rounded-2xl font-bold'>
-          <h1 className=''>Loading</h1>
-        </button>
       </>
     );
   } else if (!isLoggedIn) {
@@ -26,7 +23,9 @@ export default function Header() {
           Maily
         </h1>
         <button className=' m-4 w-45 h-12 italic border-3  border-white cursor-pointer hover:w-2xs  hover:-translate-y-0.5 hover:shadow-2xl  transition-all bg-orange-300 text-white rounded-2xl font-bold'>
-          <h1 className=''>Login With Google</h1>
+          <a href='/auth/google'>
+            <h1 className=''>Login With Google</h1>
+          </a>
         </button>
       </>
     );
@@ -37,7 +36,9 @@ export default function Header() {
           Maily
         </h1>
         <button className=' m-4 w-45 h-12 italic border-3  border-white cursor-pointer hover:w-2xs  hover:-translate-y-0.5 hover:shadow-2xl  transition-all bg-orange-300 text-white rounded-2xl font-bold'>
-          <h1 className=''>Login Out</h1>
+          <a href='/api/logout'>
+            <h1 className=''>Logout</h1>
+          </a>
         </button>
       </>
     );
